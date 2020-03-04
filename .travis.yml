@@ -1,3 +1,4 @@
+warnings_are_errors: false
 language: node_js
 node_js:
   - "stable"
@@ -6,7 +7,6 @@ cache:
   - node_modules
 script:
   - npm test
-  - unset CI
   - npm run build
 after_success:
   - npm install -g firebase-tools
