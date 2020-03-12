@@ -38,7 +38,7 @@ const TopAppBar = (props) => {
 									{props.userRole}
 								</Typography>
 							</Grid>
-							<Button data-testid="button">Sign In</Button>
+							<Button onClick={signInWithGoogle} data-testid="button">Sign In</Button>
 							<Grid item >
 								{
 									props.user ? <LogoutPopover><Avatar src={props.user.photoURL} /></LogoutPopover>
