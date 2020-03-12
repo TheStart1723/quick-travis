@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Typography, useScrollTrigger, CssBaseline, Avatar, Button, Grid } from '@material-ui/core';
 import { signInWithGoogle } from '../utils/FirebaseAuthUtils';
@@ -25,6 +25,11 @@ ElevationScroll.propTypes = {
 
 // App bar at the top of the application, example from Material UI
 const TopAppBar = (props) => {
+	const [signIn, setSignIn] = useState("seller")
+	const handleSignIn = () => {
+		setSignIn("seller")
+	}
+
 	return (
 		<React.Fragment>
 			<CssBaseline />
@@ -34,14 +39,15 @@ const TopAppBar = (props) => {
 						<AppDrawer userRole={props.userRole} setPage={props.setPage} />
 						<Grid container alignItems="center" justify="space-between">
 							<Grid item>
-								<Typography data-testid="header" variant="h6">
-									{props.userRole}
+								<Typography data-testid="header" data-cy="header" variant="h6">
+									{signIn}
 								</Typography>
+								<Button data-testid="button"/>
 							</Grid>
 							<Grid item >
 								{
 									props.user ? <LogoutPopover><Avatar src={props.user.photoURL} /></LogoutPopover>
-										: <Button onClick={signInWithGoogle}>Sign In</Button>
+										: <Button data-cy="user" onClick={()=> handleSignIn()}>Sign In</Button>
 								}
 							</Grid>
 						</Grid>
