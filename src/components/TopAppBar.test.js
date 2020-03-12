@@ -1,5 +1,5 @@
 import React from 'react'
-import {render, fireEvent} from 'react-testing-library'
+import {render, fireEvent} from '@testing-library/react'
 import TopAppBar from '../TopAppBar'
 
 test('TopAppBar should render passed props as content body and respond to callback props', () => {
